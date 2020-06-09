@@ -1,0 +1,239 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+}
+
+body {
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.container h1 {
+  font-family: Playfair Display;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 100px;
+  line-height: 133px;
+  color: #FFFFFF;
+  text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+.container h3 {
+  font-family: Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 34px;
+  color: #FFFFFF;
+  text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+.menu-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.toggler {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.hamburger {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.hamburger>div {
+  position: absolute;
+  width: 50%;
+  height: 3px;
+  border-radius: 1.5px;
+  background-color:#FFFFFF;
+}
+
+.hamburger>div:before, .hamburger>div:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  border-radius: 1.5px;
+  background-color: #FFFFFF;
+  transition: .4s;
+}
+
+.hamburger>div:before{
+  top: -10px;
+}
+
+.hamburger>div:after{
+  top:10px;
+}
+
+.toggler:checked + .hamburger>div {
+  transform: rotate(135deg);
+}
+
+.toggler:checked:hover + .hamburger>div{
+  transform: rotate(225deg);
+}
+
+.toggler:checked + .hamburger>div:after, .toggler:checked + .hamburger>div:before{
+  transform: rotate(90deg);
+  top: 0;
+}
+
+.toggler:checked ~ .menu {
+  visibility: visible;
+}
+
+.toggler:checked ~ .menu > div {
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.toggler:checked ~ .menu > div > div {
+  opacity: 1;
+} 
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background: rgba(56, 59, 55, 0.95);
+  visibility: hidden;
+  transition: .6s;
+}
+
+.menu > div {
+  position: absolute;
+  top: 220px;
+  right: -110px;
+  transform: translateX(150%) translateY(-50%);
+  transition: .6s;
+}
+
+.menu > div > div {
+  opacity: 0;
+}
+
+.menu > div > div > ul > li {
+  list-style: none;
+  border-bottom: 1px solid #1E201D;
+  width: 260px;
+}
+
+.menu > div > div > ul > li > a {
+  position: relative;
+  left: 20px;
+  width: 230px;
+  text-decoration: none;
+  color: #D3CBCF;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 18px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  transition: .3s;
+}
+
+.menu > div > div > ul > ul > li {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: 1px solid #1E201D;
+}
+
+.navigation {
+  width: 260px;
+}
+
+.mainmenu, .submenu {
+  list-style: none;
+  padding: 0;
+
+}
+
+.mainmenu a {
+  display: block;
+  text-decoration: none;
+  padding: 10px;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 18px;
+  color: #D3CBCF;
+  border-bottom: 1px solid #1E201D;
+  padding: 15px 0px 15px 30px;
+}
+
+.mainmenu a:hover {
+  background: #1E201D;
+}
+
+.mainmenu li:hover .submenu {
+  display: block;
+  max-height: 200px;
+}
+
+.submenu a {
+  background: rgba(30, 32, 29, 0.4);
+  width: 260px;
+  height: 48px;
+}
+
+.submenu a:hover {
+  background-color: #666;
+}
+
+.submenu {
+  position: absolute;
+  overflow: hidden;
+  max-height: 0;
+  -webkit-transition: all 0.5s ease-out;
+}
+
+.navigation  i {
+  float: right;
+  margin-right: 17px;
+}
+
+
